@@ -14,3 +14,6 @@ spec:
     repoURL: https://kiali.org/helm-charts
     targetRevision: 1.79.0
     chart: kiali-server
+  syncPolicy:
+    automated:
+      prune: true

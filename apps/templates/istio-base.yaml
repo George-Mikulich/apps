@@ -14,3 +14,6 @@ spec:
     repoURL: https://github.com/istio/istio
     targetRevision: HEAD
     path: manifests/charts/base
+  syncPolicy:
+    automated:
+      prune: true

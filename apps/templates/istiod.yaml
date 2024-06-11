@@ -14,3 +14,6 @@ spec:
     repoURL: https://github.com/istio/istio
     targetRevision: HEAD
     path: manifests/charts/istio-control/istio-discovery
+  syncPolicy:
+    automated:
+      prune: true
