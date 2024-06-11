@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kiali
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: istio-system
+    server: {{ .Values.destinationServer }}
+  project: default
+  source:
+    repoURL: https://kiali.org/helm-charts
+    targetRevision: 1.79.0
+    chart: kiali-server
