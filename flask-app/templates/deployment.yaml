@@ -4,20 +4,17 @@ metadata:
   name: {{ .Values.appLabel }}
   labels:
     app: {{ .Values.appLabel }}
-    version: v1
 spec:
   replicas: {{ .Values.replicaCount }}
   revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: {{ .Values.appLabel }}
-      version: v1
   template:
     metadata:
       labels:
         app: {{ .Values.appLabel }}
         istio-injection: "true"
-        version: v1
     spec:
       serviceAccountName: useless-thing
       containers:
