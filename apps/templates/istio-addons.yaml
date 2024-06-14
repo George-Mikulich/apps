@@ -11,7 +11,7 @@ spec:
     server: {{ .Values.destinationServer }}
   project: default
   source:
-    path: samples/addons/prometheus.yaml
+    path: samples/addons
     repoURL: https://github.com/istio/istio
     targetRevision: HEAD
   syncPolicy:
