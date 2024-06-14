@@ -13,6 +13,6 @@ spec:
         exact: /flask
     route:
     - destination:
-        host: flask-app
+        host: flask-app.default.svc.cluster.local
         port:
           number: 5000
