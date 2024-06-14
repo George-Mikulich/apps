@@ -4,7 +4,7 @@ metadata:
   name: flask-app
 spec:
   hosts:
-  - lol.app-georgij.com
+  - flask.app-georgij.com
   gateways:
   - myapp-gateway
   http:
