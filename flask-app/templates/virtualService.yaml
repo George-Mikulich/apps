@@ -10,7 +10,7 @@ spec:
   http:
   - match:
     - uri:
-        exact: /flask
+        exact: /
     route:
     - destination:
         host: flask-app.default.svc.cluster.local
