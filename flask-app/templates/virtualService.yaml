@@ -9,7 +9,7 @@ spec:
   - myapp-gateway
   http:
   - match:
-      uri:
+    - uri:
         exact: /
     route:
     - destination:
