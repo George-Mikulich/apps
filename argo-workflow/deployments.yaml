@@ -87,8 +87,7 @@ spec:
       - -c
       - |
         git checkout main
-        sed 's/canary/bluegreen/' flask-app/templates/virtualService.yaml > tmp
-        sed 's/previous/bluegreen/' flask-app/templates/virtualService.yaml > tmp
+        sed 's/canary/bluegreen/g; s/previous/bluegreen/g' flask-app/templates/virtualService.yaml > tmp
         rm flask-app/templates/virtualService.yaml
         mv tmp flask-app/templates/virtualService.yaml
         git config --global user.email "g.mikulich@softteco.com"
