@@ -49,6 +49,7 @@ spec:
       - sh
       - -c
       - |
+        git checkout main
         sed 's/previous/canary/' flask-app/templates/virtualService.yaml > tmp
         rm flask-app/templates/virtualService.yaml
         mv tmp flask-app/templates/virtualService.yaml
@@ -85,6 +86,8 @@ spec:
       - sh
       - -c
       - |
+        git checkout main
+        sed 's/canary/bluegreen/' flask-app/templates/virtualService.yaml > tmp
         sed 's/previous/bluegreen/' flask-app/templates/virtualService.yaml > tmp
         rm flask-app/templates/virtualService.yaml
         mv tmp flask-app/templates/virtualService.yaml
@@ -120,6 +123,7 @@ spec:
       - sh
       - -c
       - |
+        git checkout main
         sed 's/bluegreen/previous/' flask-app/templates/virtualService.yaml > tmp
         rm flask-app/templates/virtualService.yaml
         mv tmp flask-app/templates/virtualService.yaml
@@ -139,4 +143,3 @@ spec:
           secretKeyRef:
             name: github-auth
             key: password
-      
