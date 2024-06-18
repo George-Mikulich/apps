@@ -5,8 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: quay.io/george-mikulich/flask-app
-  tag: "beautified"
+  registry: quay.io
+  username: george-mikulich
+  repo: flask-app
+  tag1: "1.0"
+  tag2: beautified
 
 containerPort: 5000
 
