@@ -12,7 +12,7 @@ spec:
     - headers:
         user-agent:
           exact: guga
-    - uri:
+      uri:
         exact: /
     route:
     - destination:
