@@ -9,9 +9,6 @@ spec:
   - myapp-gateway
   http:
   - match:
-    - headers:
-        user-agent:
-          exact: guga
       uri:
         exact: /
     route:
@@ -19,21 +16,11 @@ spec:
         host: flask-app.default.svc.cluster.local
         subset: v1
         port:
-          number: 5000
-      weight: 90
+          number: {{ .Values.service.port }}
+      weight: {{ .Values.virtualService.weights.previous.version1 }}
     - destination:
         host: flask-app.default.svc.cluster.local
         subset: v2
         port:
-          number: 5000
-      weight: 10
-
-  - match:
-    - uri:
-        exact: /
-    route:
-    - destination:
-        host: flask-app.default.svc.cluster.local
-        subset: v1
-        port:
-          number: 5000
+          number: {{ .Values.service.port }}
+      weight: {{ .Values.virtualService.weights.previous.version2 }}

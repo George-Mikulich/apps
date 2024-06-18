@@ -17,6 +17,18 @@ appLabel: "flask-app"
 
 istioManaged: "true"
 
+virtualService:
+  weights:
+    previous:
+     version1: 100
+     version2: 0
+    canary:
+      version1: 90
+      version2: 10
+    bluegreen:
+      version1: 0
+      version2: 100
+
 service:
   type: ClusterIP
   port: 5000
