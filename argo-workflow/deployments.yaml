@@ -8,16 +8,12 @@ spec:
   - name: main
     dag:
       tasks:
-      - name: check-connection
-        template: check
 
       - name: deploy-canary
         template: suspend
-        dependencies: [check-connection]
 
       - name: deploy-bluegreen
         template: suspend
-        dependencies: [check-connection]
 
       - name: canary-deployment
         template: canary
@@ -34,9 +30,6 @@ spec:
       - name: return-to-blue
         template: greenblue
         dependencies: [undo-green-version]
-
-  - name: check
-
 
   - name: suspend
     suspend: {}
@@ -63,7 +56,7 @@ spec:
         git config --global user.name "$USER"
         git add .
         git commit -m 'canary deployment'
-        git push https://$USER:$TOKEN@github.com/George-Mikulich/helm-chart.git prod
+        git push https://$USER:$TOKEN@github.com/George-Mikulich/apps.git main
       env:
       - name: USER
         valueFrom:
@@ -99,7 +92,7 @@ spec:
         git config --global user.name "$USER"
         git add .
         git commit -m 'bluegreen deployment'
-        git push https://$USER:$TOKEN@github.com/George-Mikulich/helm-chart.git prod
+        git push https://$USER:$TOKEN@github.com/George-Mikulich/apps.git main
       env:
       - name: USER
         valueFrom:
@@ -134,7 +127,7 @@ spec:
         git config --global user.name "$USER"
         git add .
         git commit -m 'undo bluegreen deployment'
-        git push https://$USER:$TOKEN@github.com/George-Mikulich/helm-chart.git prod
+        git push https://$USER:$TOKEN@github.com/George-Mikulich/apps.git main
       env:
       - name: USER
         valueFrom:
