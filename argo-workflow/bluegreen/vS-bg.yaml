@@ -5,7 +5,7 @@ metadata:
   namespace: green
 spec:
   hosts:
-  - flask2.app-georgij.com
+  - flask.app-georgij.com
   gateways:
   - myapp-gateway
   http:
@@ -14,14 +14,6 @@ spec:
         exact: /
     route:
     - destination:
-        host: flask-app.default.svc.cluster.local
-        subset: v1
+        host: flask-app.green.svc.cluster.local
         port:
           number: {{ .Values.service.port }}
-      weight: {{ .Values.virtualService.weights.previous.version1 }}
-    - destination:
-        host: flask-app.default.svc.cluster.local
-        subset: v2
-        port:
-          number: {{ .Values.service.port }}
-      weight: {{ .Values.virtualService.weights.previous.version2 }}

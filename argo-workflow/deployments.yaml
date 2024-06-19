@@ -58,9 +58,7 @@ spec:
       - -c
       - |
         git checkout main
-        sed 's/previous/canary/' flask-app/templates/virtualService.yaml > tmp
-        rm flask-app/templates/virtualService.yaml
-        mv tmp flask-app/templates/virtualService.yaml
+        sed -i 's/previous/canary/' flask-app/templates/virtualService.yaml
         rm flask-app/templates/deployment.yaml
         cp argo-workflow/deployment-mix.yaml flask-app/templates/deployment.yaml
         git config --global user.email "g.mikulich@softteco.com"
@@ -97,11 +95,9 @@ spec:
       - -c
       - |
         git checkout main
-        sed 's/previous/bluegreen/g' flask-app/templates/virtualService.yaml > tmp
-        rm flask-app/templates/virtualService.yaml
-        mv tmp flask-app/templates/virtualService.yaml
-        rm flask-app/templates/*
         cp -R argo-workflow/bluegreen/* flask-app/templates
+        sed -i 's/flask.app-georgij.com/flask2.app-georgij.com/' flask-app/templates/virtualService.yaml
+        sed -i 's/flask.app-georgij.com/flask2.app-georgij.com/' flask-app/templates/gateway.yaml
         git config --global user.email "g.mikulich@softteco.com"
         git config --global user.name "$USER"
         git add .
@@ -135,13 +131,11 @@ spec:
       - -c
       - |
         git checkout main
-        sed 's/bluegreen/previous/' flask-app/templates/virtualService.yaml > tmp
-        rm flask-app/templates/virtualService.yaml
-        mv tmp flask-app/templates/virtualService.yaml
+        rm flask-app/templates/deployment.yaml flask-app/templates/destRule.yaml flask-app/templates/gateway.yaml flask-app/templates/service.yaml flask-app/templates/virtualService.yaml
         git config --global user.email "g.mikulich@softteco.com"
         git config --global user.name "$USER"
         git add .
-        git commit -m 'undo bluegreen deployment'
+        git commit -m 'delete blue version deployment'
         git push https://$USER:$TOKEN@github.com/George-Mikulich/apps.git main
       env:
       - name: USER
@@ -172,15 +166,13 @@ spec:
       - -c
       - |
         git checkout main
-        sed 's/canary/bluegreen/g; s/previous/bluegreen/g' flask-app/templates/virtualService.yaml > tmp
-        rm flask-app/templates/virtualService.yaml
-        mv tmp flask-app/templates/virtualService.yaml
+        sed -i 's/canary/bluegreen/g' flask-app/templates/virtualService.yaml
         rm flask-app/templates/deployment.yaml
         cp argo-workflow/deploymentv2.yaml flask-app/templates/deployment.yaml
         git config --global user.email "g.mikulich@softteco.com"
         git config --global user.name "$USER"
         git add .
-        git commit -m 'version 2 deployment'
+        git commit -m 'version 2 canary deployment'
         git push https://$USER:$TOKEN@github.com/George-Mikulich/apps.git main
       env:
       - name: USER
