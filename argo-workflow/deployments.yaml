@@ -174,7 +174,7 @@ spec:
         rm flask-app/templates/virtualService.yaml
         mv tmp flask-app/templates/virtualService.yaml
         rm flask-app/templates/deployment.yaml
-        cp argo-workflow/deployment-mix.yaml flask-app/templates/deployment.yaml
+        cp argo-workflow/deploymentv2.yaml flask-app/templates/deployment.yaml
         git config --global user.email "g.mikulich@softteco.com"
         git config --global user.name "$USER"
         git add .
