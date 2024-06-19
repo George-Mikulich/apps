@@ -31,13 +31,13 @@ spec:
         template: bluegreen
         dependencies: [deploy-bluegreen]
 
-      - name: undo-green-version
+      - name: delete-blue-version
         template: suspend
         dependencies: [bluegreen-deployment]
 
-      - name: return-to-blue
+      - name: delete-blue
         template: greenblue
-        dependencies: [undo-green-version]
+        dependencies: [delete-blue-version]
 
   - name: suspend
     suspend: {}
