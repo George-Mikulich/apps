@@ -97,9 +97,11 @@ spec:
       - -c
       - |
         git checkout main
-        sed 's/canary/bluegreen/g; s/previous/bluegreen/g' flask-app/templates/virtualService.yaml > tmp
+        sed 's/previous/bluegreen/g' flask-app/templates/virtualService.yaml > tmp
         rm flask-app/templates/virtualService.yaml
         mv tmp flask-app/templates/virtualService.yaml
+        rm flask-app/templates/*
+        cp -R argo-workflow/bluegreen/* flask-app/templates
         git config --global user.email "g.mikulich@softteco.com"
         git config --global user.name "$USER"
         git add .
