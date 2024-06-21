@@ -15,7 +15,7 @@ spec:
     tls:
       httpsRedirect: true
   - port:
-      name: http
+      name: http2
       number: 8081
       protocol: HTTP
     hosts:
