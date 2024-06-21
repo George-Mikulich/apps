@@ -15,6 +15,14 @@ spec:
     tls:
       httpsRedirect: true
   - port:
+      name: http
+      number: 8081
+      protocol: HTTP
+    hosts:
+    - flask.app-georgij.com
+    tls:
+      httpsRedirect: true
+  - port:
       name: https
       number: 8443
       protocol: HTTPS
