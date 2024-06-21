@@ -8,15 +8,7 @@ spec:
   servers:
   - port:
       name: http
-      number: 8080
-      protocol: HTTP
-    hosts:
-    - flask.app-georgij.com
-    tls:
-      httpsRedirect: true
-  - port:
-      name: http2
-      number: 8081
+      number: 80
       protocol: HTTP
     hosts:
     - flask.app-georgij.com
@@ -24,7 +16,7 @@ spec:
       httpsRedirect: true
   - port:
       name: https
-      number: 8443
+      number: 443
       protocol: HTTPS
     hosts:
     - flask.app-georgij.com
